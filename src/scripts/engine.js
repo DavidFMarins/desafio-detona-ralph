@@ -29,12 +29,13 @@ function countDown() {
         clearInterval(state.actions.countDownTimerId);
         clearInterval(state.actions.timerId);
         alert("Game Over! O seu resultado foi: " + state.values.result);
+        window.location.reload();
     }
 }
 
-function playSound(audioName) {
+function playSound(audioName, volume) {
     let audio = new Audio(`./src/audios/${audioName}`);
-    audio.volume = 0.1;
+    audio.volume = volume;
     audio.play();
 }
 
@@ -57,10 +58,11 @@ function addListenerHitbox() {
                 state.values.result++
                 state.view.score.textContent = state.values.result;
                 state.values.hitPosition = null;
-                playSound("hit.m4a");
+                playSound("hit.m4a", 0.1);
             } else if (square.id !== state.values.hitPosition) {
                 state.values.currentLife = state.values.currentLife -1;
                 state.view.lives.textContent = state.values.currentLife;
+                playSound("miss.mp3", 1);
                 if ( state.values.currentLife === 0) {
                     alert("Game Over! O seu resultado foi: " + state.values.result)
                     window.location.reload();
@@ -71,9 +73,10 @@ function addListenerHitbox() {
     }
 
 function initialize() {
-    playSound("theme.mp3");
     addListenerHitbox();
 }
+
+
 
 initialize();
 

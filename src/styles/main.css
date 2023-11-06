@@ -27,8 +27,8 @@
 .square {
     height: 150px;
     width: 150px;
-    border: 1px solid #000000;
-    background-color: #7fffd4;
+    border: 5px groove #000000;
+    background-color: #c4c4c4;
 }
 
 .enemy {
@@ -44,4 +44,11 @@
 
 .menu-time h2:nth-child(2), .menu-score h2:nth-child(2) {
     margin-top: 1rem;
+}
+
+.audio {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
